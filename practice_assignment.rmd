@@ -415,3 +415,18 @@ str(output)
 ```
 
 This approach avoids all of the messy copying and recopying of the data to build the final data frame.  It's much more "R-like" and works quite a bit faster than our other approach.
+
+###11) Here is my code & output for the first part of assignment1. Please let me know what could be the problem ?
+pollutantmean <- function (directory, pollutant, id = 1:332) {
++     list <- list.files(directory, full.names=TRUE)
++     dat <- data.frame()
++     for(i in 1:332){
++         dat <- rbind(dat, read.csv(list[i]))
++     }
++     pollutant_subset <- dat[which(dat[, "pollutant"] == pollutant) , ]
++     mean(pollutant_subset[,"pollutant"], NA.rm = TRUE)
++ }
+>     pollutantmean ("specdata", "sulfate", 1:10)
+Error in `[.data.frame`(dat, , "pollutant") : undefined columns selected
+Called from: `[.data.frame`(dat, , "pollutant")
+Browse[1]> 
